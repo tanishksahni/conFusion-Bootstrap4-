@@ -32,8 +32,7 @@
                 <li class="nav-item"><a class="nav-link" href="contactus.html"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
               </ul>
               <span class="navbar-text">
-                  <a data-toggle="modal" data-target="#loginModal">
-                      <span class="fa fa-sign-in"></span> Login
+                <a id="loginButton" role="button"><span class="fa fa-sign-in"></span> Login</a>
                   </a>
               </span>
             </div>
@@ -81,7 +80,7 @@
     
 
     <!-- reserve a table -->
-    <div class="modal fade" id="ReserveTable" role="dialog">
+    <div class="modal fade" id="reserveModal" role="dialog">
         <div class="modal-dialog modal-lg" role="content">
             <div class="modal-content">
                 <div class="modal-header">
@@ -169,9 +168,8 @@
                     <img src="img/logo.png" class="img-fluid">
                 </div>
                 <div class=" col-12 col-sm align-self-center">
-                    <a role="button" class="btn btn-warning btn-block"
-                      data-toggle="modal" data-target="#ReserveTable"
-                      style="color: white;">Reserve Table</a>
+                    <a type="button" class="btn btn-warning btn-sm btn-block" role="button" id="reserveButton" 
+                    title="Or Call us at +852 12345678"> Reserve a Table </a>
                 </div>
             </div>
         </div>
@@ -329,22 +327,29 @@
  <script src="node_modules/jquery/dist/jquery.slim.min.js"></script>
  <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+ 
  <script>
-     $(document).ready(function() {
-         $("#mycarousel").carousel( { interval: 2000 } );
-         $("#carouselButton").click(function(){
-                if ($("#carouselButton").children("span").hasClass('fa-pause')) {
-                    $("#mycarousel").carousel('pause');
-                    $("#carouselButton").children("span").removeClass('fa-pause');
-                    $("#carouselButton").children("span").addClass('fa-play');
-                }
-                else if ($("#carouselButton").children("span").hasClass('fa-play')){
-                    $("#mycarousel").carousel('cycle');
-                    $("#carouselButton").children("span").removeClass('fa-play');
-                    $("#carouselButton").children("span").addClass('fa-pause');                    
-                }
-            });
-     });
+    $(document).ready(function(){
+	$("#mycarousel").carousel( { interval: 2000 } );
+	$("#carousel-button").click(function(){
+		if ($("#carousel-button").children("span").hasClass('fa-pause')) {
+			$("#mycarousel").carousel('pause');
+			$("#carousel-button").children("span").removeClass('fa-pause');
+			$("#carousel-button").children("span").addClass('fa-play');
+		}
+		else if ($("#carousel-button").children("span").hasClass('fa-play')){
+			$("#mycarousel").carousel('cycle');
+			$("#carousel-button").children("span").removeClass('fa-play');
+			$("#carousel-button").children("span").addClass('fa-pause');                    
+		}
+	});
+	$('#reserveButton').click(function(){
+		$('#reserveModal').modal('show');
+	});
+	$('#loginButton').click(function(){
+		$('#loginModal').modal('show');
+	});
+});
  </script>
  
 </body>
